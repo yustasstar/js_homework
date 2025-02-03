@@ -79,8 +79,8 @@ console.log(3 ** (9 / 3));
 
 // !!'false' == !!'true'        // true    (исправил)
 
-// Шаг 1: !!'false' -> true (любая непустая строка truthy -> !!true -> !faulse -> true)
-// Шаг 2: !!'true' -> true (любая непустая строка truthy -> !!true -> !faulse -> true)
+// Шаг 1: !!'false' -> true (любая непустая строка truthy -> !!true -> !false -> true)
+// Шаг 2: !!'true' -> true (любая непустая строка truthy -> !!true -> !false -> true)
 // Шаг 3: true == true -> true (сравнение одинаковых значений)
 console.log(!!'false' == !!'true');
 
