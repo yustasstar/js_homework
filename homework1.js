@@ -77,10 +77,10 @@ console.log(null == '');
 // Шаг 2: 3 ** 3 -> 27 (возведение в степень)
 console.log(3 ** (9 / 3));
 
-// !!'false' == !!'true'        // true
+// !!'false' == !!'true'        // true    (исправил)
 
-// Шаг 1: !!'false' -> true (любая непустая строка truthy)
-// Шаг 2: !!'true' -> true (любая непустая строка truthy)
+// Шаг 1: !!'false' -> true (любая непустая строка truthy -> !!true -> !faulse -> true)
+// Шаг 2: !!'true' -> true (любая непустая строка truthy -> !!true -> !faulse -> true)
 // Шаг 3: true == true -> true (сравнение одинаковых значений)
 console.log(!!'false' == !!'true');
 
@@ -90,12 +90,13 @@ console.log(!!'false' == !!'true');
 // Шаг 2: 0 || 1 -> 1 (оператор || выбирает первое truthy значение)
 console.log(0 || '0' && 1);
 
-// (+null == false) < 1     // true
+
+// (+null == false) < 1     // false    (исправил)
 
 // Шаг 1: +null -> 0 (унарный плюс превращает null в число)
 // Шаг 2: 0 == false -> true (нестрогое сравнение, false превращается в 0)
-// Шаг 3: true < 1 -> true (true преобразуется в 1, 1 < 1 -> false, но true < 1 -> true)
-console.log((+null == false) < 1);
+// Шаг 3: true < 1 -> false (true преобразуется в 1, 1 < 1 -> false)
+console.log((+null == false) < 1); 
 
 // false && true || true        // true
 
@@ -109,10 +110,10 @@ console.log(false && true || true);
 // Шаг 2: false && true -> false (логическое И, false делает результат false)
 console.log(false && (false || true));
 
-// (+null == false) < 1 ** 5        // true
+// (+null == false) < 1 ** 5        // false   (исправил)
 
 // Шаг 1: +null -> 0 (унарный плюс превращает null в число)
 // Шаг 2: 0 == false -> true (нестрогое сравнение)
 // Шаг 3: 1 ** 5 -> 1 (возведение в степень)
-// Шаг 4: true < 1 -> true (true становится 1, 1 < 1 -> false, но true < 1 -> true)
+// Шаг 4: true < 1 -> false (true становится 1, 1 < 1 -> false)
 console.log((+null == false) < 1 ** 5);
