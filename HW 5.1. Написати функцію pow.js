@@ -1,28 +1,22 @@
-
 function pow(x, y) 
-{   // Число в нульовій степені === 1
-    // Нуль в нульовій степені === 1 (за домовленістю)  
-    if (y === 0) {return 1;}      
-    
-    // В математиці нуль в нульовій степені зазвичай вважається невизначеним. Однак, у програмуванні часто приймають, що 0^0 = 1 для зручності обчислень. Нуль в нульовій степені === undefined (за домовленістю):
-        // if (x === 0) {return undefined;}                                       
-        // else {return 1;}  
-                        
-    if (x === 0 && y < 0) { // обробка винятку: на нуль ділити не можна
-        return "на нуль ділити не можна";
-    }
+{
+    if (y === 0) return 1; // будь-яке число в нульовій степені === 1     
+    if (x === 0) return y > 0 ? 0 : "Undefined"; 
 
     let result = 1;
-    for (let i = 1; i <= Math.abs(y); i++) {
+    let absY = y < 0 ? -y : y;
+    
+    for (let i = 0; i < absY; i++) {
         result *= x;
     }
-
-    return y > 0 ? result : 1 / result;  // a^−n = 1 / a^n
+    
+    return y < 0 ? 1 / result : result; // a^−n = 1 / a^n
 }
+
 
 console.log(pow(0, 0));    // 1
 console.log(pow(0, 3));    // 0
-console.log(pow(0, -2));   // на нуль ділити не можна
+console.log(pow(0, -2));   // Undefined
 console.log(pow(5, -3));   // 0.008
 console.log(pow(2, 0));    // 1
 console.log(pow(2, 3));    // 8
